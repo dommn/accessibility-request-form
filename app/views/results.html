@@ -1,0 +1,253 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "https://www.gov.uk/",
+    serviceName: "Check bank or building society details",
+    serviceUrl: "account-home",
+    navigation: [
+    {
+      href: "",
+      text: ""
+    }
+    ]
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "start"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukPanel({
+      titleText: "This account is with Royal Bank of Scotland",
+      html: ""
+    }) }}
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Sortcode"
+            },
+            value: {
+              text: "112233"
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Account number"
+            },
+            value: {
+              text: "68975834"
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Bank name"
+            },
+            value: {
+              text: "Royal Bank of Scotland"
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Branch title"
+            },
+            value: {
+              html: "Head Office Collection Account"
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: 'Premier Place<br> 2 1/2 Devonshire Square<br> London'
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Postcode"
+            },
+            value: {
+              html: 'EC2M 4BA'
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              html: '012345678'
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Direct Debit"
+            },
+            value: {
+              html: 'Yes'
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "BACS Credit"
+            },
+            value: {
+              html: 'Yes'
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "AUDDIS"
+            },
+            value: {
+              html: 'Yes'
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "BACS Status"
+            },
+            value: {
+              html: 'Member'
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Closure date"
+            },
+            value: {
+              html: '10/10/2010'
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Search again",
+          href: "index"
+        }) }}
+
+{% endblock %}

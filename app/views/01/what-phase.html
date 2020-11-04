@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{% from "hmcts-header/macro.njk" import hmctsHeader %}
+
+{{ hmctsHeader({
+
+service: {
+name: 'Find colleagues with accessibility needs',
+url: 'start'
+},
+
+navigation: {
+label: 'Account navigation',
+items: [{
+  text: '',
+  href: ''
+}
+]
+}
+
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  "tag": {
+    "text": "prototype"
+  },
+  "html": "This is a prototype of a new service."
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "what-do-you-need-participants-for"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="project-name" method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What phase are you in?
+              </h1>
+            </legend>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="discovery" name="phase" type="radio" value="Discovery">
+                <label class="govuk-label govuk-radios__label" for="phase">
+                  Discovery
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="alpha" name="phase" type="radio" value="Alpha">
+                <label class="govuk-label govuk-radios__label" for="alpha">
+                  Alpha
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="beta" name="phase" type="radio" value="Beta">
+                <label class="govuk-label govuk-radios__label" for="beta">
+                  Beta
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="live" name="phase" type="radio" value="Live">
+                <label class="govuk-label govuk-radios__label" for="live">
+                  Live
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="not-applicable" name="phase" type="radio" value="Not applicable">
+                <label class="govuk-label govuk-radios__label" for="not-applicable">
+                  Not applicable
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

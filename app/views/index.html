@@ -1,0 +1,185 @@
+{% extends "layout.html" %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "https://www.gov.uk/",
+    serviceName: "Validate bank details",
+    serviceUrl: "account-home",
+    navigation: [
+    {
+      href: "",
+      text: ""
+    }
+    ]
+  }) }}
+  <div class="homepage-top">
+  <div class="homepage-top-content">
+    <h1 class="govuk-heading-xl">
+      {{serviceName}}
+      <span>Prototypes</span>
+    </h1>
+  </div>
+</div>
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {# Start of most recent box #}
+    <div class="most-recent">
+
+      {# Start of prototype write up #}
+      <div class="prototype-write-up">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Date of release</dt>
+              <dd class="govuk-body">TBC</dd>
+            </dl>
+          </div>
+
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Feature</dt>
+              <dd class="govuk-body">Initial interface</dd>
+            </dl>
+          </div>
+
+          <div class="govuk-grid-column-one-third">
+            <dl>
+              <dt class="govuk-heading-s">Related stories</dt>
+              <dd class="govuk-body">TBC</dd>
+            </dl>
+          </div>
+        </div>
+
+        <h3 class="govuk-heading-s">Changes</h3>
+        <p>N/A</p>
+
+        <h3 class="govuk-heading-s">Hypothesis</h3>
+        <p>None.</p>
+
+        <h3 class="govuk-heading-s">Research notes</h3>
+        <p>None.</p>
+
+        <h4 class="govuk-heading-s">Version</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>removed 'yes' from list summary</li>
+        </ul>
+
+        {{ govukButton({
+          text: "View prototype",
+          href: "/fraud/find-an-account"
+        }) }}
+
+      </div>
+      {# End of prototype write up #}
+
+    </div>
+    {# End of most recent box #}
+
+    <h2 class="govuk-heading-l">Previous versions</h2>
+
+          {# Start of hidden panel #}
+          <details class="govuk-details all-versions">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Show all versions
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+
+              {# Start of prototype write up #}
+
+              <div class="prototype-write-up">
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-one-third">
+                    <dl>
+                      <dt class="govuk-heading-s">Date of release</dt>
+                      <dd class="govuk-body">N/A</dd>
+                    </dl>
+                  </div>
+
+                  <div class="govuk-grid-column-one-third">
+                    <dl>
+                      <dt class="govuk-heading-s">Feature</dt>
+                      <dd class="govuk-body">Iteration 3</dd>
+                    </dl>
+                  </div>
+
+                  <div class="govuk-grid-column-one-third">
+                    <dl>
+                      <dt class="govuk-heading-s">Related stories</dt>
+                      <dd class="govuk-body">N/A</dd>
+                    </dl>
+                  </div>
+                </div>
+
+                <h3 class="govuk-heading-s">Information about this feature</h3>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>iterated notification messaging</li>
+                  <li>added Direct Debit and Faster Payment 'no' messaging to success notifications</li>
+                  <li>removed list summary items, such as Direct Debit and Faster Payment when 'yes'</li>
+                </ul>
+
+                {{ govukButton({
+                  text: "View prototype",
+                  href: "/03/find-an-account"
+                }) }}
+              </div>
+              {# End of prototype write up #}
+
+            {# Start of prototype write up #}
+
+            <div class="prototype-write-up">
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                  <dl>
+                    <dt class="govuk-heading-s">Date of release</dt>
+                    <dd class="govuk-body">TBC</dd>
+                  </dl>
+                </div>
+
+                <div class="govuk-grid-column-one-third">
+                  <dl>
+                    <dt class="govuk-heading-s">Feature</dt>
+                    <dd class="govuk-body">Horizontal input navigation</dd>
+                  </dl>
+                </div>
+
+                <div class="govuk-grid-column-one-third">
+                  <dl>
+                    <dt class="govuk-heading-s">Related stories</dt>
+                    <dd class="govuk-body">N/A</dd>
+                  </dl>
+                </div>
+              </div>
+
+              <h3 class="govuk-heading-s">Information about this feature</h3>
+              <p>The initial designs included a version with inline inputs that borrowed stylistically from GOV.UK Pay's backend interface.</p>
+
+              <h3 class="govuk-heading-s">Research notes</h3>
+
+              <p>Usability sessions showed that users preferred to have the navigation inputs stacked on top of each other.</p>
+
+              {{ govukButton({
+                text: "View prototype",
+                href: "/fraud-vertical/find-an-account"
+              }) }}
+            </div>
+            {# End of prototype write up #}
+
+        </details>
+        {# End of hidden panel #}
+
+  </div>
+</div>
+
+{% endblock %}

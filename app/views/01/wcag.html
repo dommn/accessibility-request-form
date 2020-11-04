@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{% from "hmcts-header/macro.njk" import hmctsHeader %}
+
+{{ hmctsHeader({
+
+service: {
+name: 'Find colleagues with accessibility needs',
+url: 'start'
+},
+
+navigation: {
+label: 'Account navigation',
+items: [{
+  text: '',
+  href: ''
+}
+]
+}
+
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  "tag": {
+    "text": "prototype"
+  },
+  "html": "This is a prototype of a new service."
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "when"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="check-answers" method="post" novalidate>
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Which of these WCAG assessment criteria do you need help with?
+              </h1>
+            </legend>
+            <br>
+            <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                You must read and complete the <a href="#">WCAG 2.1 assessment</a> before continuing.
+              </strong>
+            </div>
+            <div id="waste-hint" class="govuk-hint">
+              Select all that apply.
+            </div>
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="character-key" name="criteria" type="checkbox" value="Character key shortcuts">
+                <label class="govuk-label govuk-checkboxes__label" for="character-key">
+                  Character key shortcuts
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="timing-adjustment" name="criteria" type="checkbox" value="Timing adjustment">
+                <label class="govuk-label govuk-checkboxes__label" for="timing-adjustment">
+                  Timing adjustment
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="pause" name="criteria" type="checkbox" value="Pause, stop, hide">
+                <label class="govuk-label govuk-checkboxes__label" for="pause">
+                  Pause, stop, hide
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="bypass" name="criteria" type="checkbox" value="Bypass blocks">
+                <label class="govuk-label govuk-checkboxes__label" for="bypass">
+                  Bypass blocks
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="error" name="criteria" type="checkbox" value="Error identification">
+                <label class="govuk-label govuk-checkboxes__label" for="error">
+                  Error identification
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="labels" name="criteria" type="checkbox" value="Labels or instructions">
+                <label class="govuk-label govuk-checkboxes__label" for="labels">
+                  Labels or instructions
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="error-suggestion" name="criteria" type="checkbox" value="Error suggestion">
+                <label class="govuk-label govuk-checkboxes__label" for="error-suggestion">
+                  Error suggestion
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="name" name="criteria" type="checkbox" value="Name, role, value">
+                <label class="govuk-label govuk-checkboxes__label" for="name">
+                  Name, role, value
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="status" name="criteria" type="checkbox" value="Status messages">
+                <label class="govuk-label govuk-checkboxes__label" for="status">
+                  Status messages
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}
