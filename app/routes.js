@@ -7,9 +7,9 @@ router.post('/participants', function (req, res) {
 
   let inputName1 = req.session.data['participants']
   let inputName2 = req.session.data['participants'] 
-  if (inputName1 === 'usability' ) {
+  if (inputName1 === 'Usability testing' ) {
     res.redirect('/01/wcag')
-  } else if (inputName2 === 'other') {
+  } else if (inputName2 === 'Other types of user research') {
     res.redirect('/01/no-wcag-route/what-phase')
   } else {
     res.redirect('/01/wcag')
@@ -17,5 +17,15 @@ router.post('/participants', function (req, res) {
 
 })
 
+router.post('/accessibility-user', function (req, res) {
+
+  const over18 = req.session.data['accessibility-user']
+
+  if (over18 === 'Yes') {
+    res.redirect('/02/about-you')
+  } else {
+    res.redirect('/02/contact-details')
+  }
+})
 
 module.exports = router

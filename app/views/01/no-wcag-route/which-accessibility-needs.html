@@ -9,7 +9,7 @@
 
 service: {
 name: 'Find colleagues with accessibility needs',
-url: 'start'
+url: '../start'
 },
 
 navigation: {
@@ -36,7 +36,7 @@ items: [{
 
 {{ govukBackLink({
   text: "Back",
-  href: "start"
+  href: "how-many-users"
 }) }}
 
 {% endblock %}
@@ -44,14 +44,14 @@ items: [{
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/participants" method="post" class="form">
+      <form action="when" method="post" class="form">
 
         {{ govukCheckboxes({
-          idPrefix: "participants",
-          name: "participants",
+          idPrefix: "accessibility-needs",
+          name: "accessibility-needs",
           fieldset: {
             legend: {
-              text: "What do you need participants for?",
+              text: "Who do you want to research with?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -61,12 +61,28 @@ items: [{
           },
           items: [
             {
-              value: "Usability testing",
-              text: "Usability testing"
+              value: "Blind people or those with a visual impairment",
+              text: "Blind people or those with a visual impairment"
             },
             {
-              value: "Other types of user research",
-              text: "Other types of user research"
+              value: "Deaf people or those with a hearing impairment",
+              text: "Deaf people or those with a hearing impairment"
+            },
+            {
+              value: "People with physical or motor disabilities",
+              text: "People with physical or motor disabilities"
+            },
+            {
+              value: "Neurodiverse people",
+              text: "Neurodiverse people"
+            },
+            {
+              value: "People with learning disabilities",
+              text: "People with learning disabilities"
+            },
+            {
+              value: "People with a hidden disability",
+              text: "People with a hidden disability"
             }
           ]
         }) }}

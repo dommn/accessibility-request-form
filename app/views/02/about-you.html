@@ -8,7 +8,7 @@
 {{ hmctsHeader({
 
 service: {
-name: 'Find colleagues with accessibility needs',
+name: 'Help to make our digital services accessible for DWP staff',
 url: 'start'
 },
 
@@ -36,7 +36,7 @@ items: [{
 
 {{ govukBackLink({
   text: "Back",
-  href: "start"
+  href: "how"
 }) }}
 
 {% endblock %}
@@ -44,14 +44,14 @@ items: [{
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/participants" method="post" class="form">
+      <form action="contact-details" method="post" novalidate>
 
         {{ govukCheckboxes({
-          idPrefix: "participants",
-          name: "participants",
+          idPrefix: "accessibility-needs",
+          name: "accessibility-needs",
           fieldset: {
             legend: {
-              text: "What do you need participants for?",
+              text: "Tell us about yourself",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -61,16 +61,32 @@ items: [{
           },
           items: [
             {
-              value: "Usability testing",
-              text: "Usability testing"
+              value: "I’m blind or have a visual impairment",
+              text: "I’m blind or have a visual impairment"
             },
             {
-              value: "Other types of user research",
-              text: "Other types of user research"
+              value: "I’m Deaf or have a hearing impairment",
+              text: "I’m Deaf or have a hearing impairment"
+            },
+            {
+              value: "I have a physical or motor disability",
+              text: "I have a physical or motor disability"
+            },
+            {
+              value: "I’m neurodiverse",
+              text: "I’m neurodiverse"
+            },
+            {
+              value: "I have learning disabilities",
+              text: "I have learning disabilities"
+            },
+            {
+              value: "I have a hidden disability",
+              text: "I have a hidden disability"
             }
           ]
         }) }}
-
+    
         <button class="govuk-button" data-module="govuk-button">
           Continue
         </button>

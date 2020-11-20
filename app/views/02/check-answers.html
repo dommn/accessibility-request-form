@@ -36,7 +36,7 @@ items: [{
 
 {{ govukBackLink({
   text: "Back",
-  href: "time"
+  href: "contact-details"
 }) }}
 
 {% endblock %}
@@ -46,32 +46,32 @@ items: [{
     <div class="govuk-grid-column-two-thirds">
       <form action="success" method="post" novalidate>
 
-        <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+        <h1 class="govuk-heading-l">Check your answers</h1>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What
+              How you can help
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['participants'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> name</span>
+              <a class="govuk-link" href="what">
+                Change<span class="govuk-visually-hidden"> how you can help</span>
               </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              How do you want to take part
+              How you want to take part
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['how'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> date of birth</span>
+              <a class="govuk-link" href="how">
+                Change<span class="govuk-visually-hidden"> how you want to take part</span>
               </a>
             </dd>
           </div>
@@ -83,8 +83,8 @@ items: [{
               {{ data['time'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> address</span>
+              <a class="govuk-link" href="time">
+                Change<span class="govuk-visually-hidden"> how much time you are happy to spend helping us</span>
               </a>
             </dd>
           </div>
@@ -96,8 +96,62 @@ items: [{
               {{ data['notice'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> contact details</span>
+              <a class="govuk-link" href="notice">
+                Change<span class="govuk-visually-hidden"> how much notice you need before taking part</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you use accessibility software?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['accessibility-user'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="accessibility-user">
+                Change<span class="govuk-visually-hidden"> if you use accessibility software</span>
+              </a>
+            </dd>
+          </div>
+          {% if data['accessibility-user'] == 'Yes'  %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              About you
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["accessibility-needs"] }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="about-you">
+                Change<span class="govuk-visually-hidden"> your answer to tell us about yourself</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Your full name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['full-name'] | title }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="contact-details">
+                Change<span class="govuk-visually-hidden"> your full name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Your email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['email'] | lower }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="contact-details">
+                Change<span class="govuk-visually-hidden"> your email address</span>
               </a>
             </dd>
           </div>

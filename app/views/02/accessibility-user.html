@@ -8,7 +8,7 @@
 {{ hmctsHeader({
 
 service: {
-name: 'Find colleagues with accessibility needs',
+name: 'Help to make our digital services accessible for DWP staff',
 url: 'start'
 },
 
@@ -36,7 +36,7 @@ items: [{
 
 {{ govukBackLink({
   text: "Back",
-  href: "what-phase"
+  href: "how"
 }) }}
 
 {% endblock %}
@@ -44,19 +44,30 @@ items: [{
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="reasons-why" method="post" novalidate>
+      <form action="/accessibility-user" method="post" novalidate>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                What’s the name of your project, product or service?
-              </h1>
-            </legend>
-            <input class="govuk-input" id="project-name" name="project-name" type="text">
-
-          </fieldset>
-        </div>
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "accessibility-user",
+          name: "accessibility-user",
+          fieldset: {
+            legend: {
+              text: "Do you use accessibility software?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
 
         <button class="govuk-button" data-module="govuk-button">
           Continue
