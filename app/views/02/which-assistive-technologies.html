@@ -8,7 +8,7 @@
 {{ hmctsHeader({
 
 service: {
-name: 'Help to make our digital services accessible for DWP staff',
+name: 'Find colleagues with accessibility needs',
 url: 'start'
 },
 
@@ -36,7 +36,7 @@ items: [{
 
 {{ govukBackLink({
   text: "Back",
-  href: "javascript:history.back()"
+  href: "accessibility-user"
 }) }}
 
 {% endblock %}
@@ -44,14 +44,14 @@ items: [{
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="contact-details" method="post" novalidate>
+      <form action="about-you" method="post" class="form">
 
         {{ govukCheckboxes({
-          idPrefix: "accessibility-needs",
-          name: "accessibility-needs",
+          idPrefix: "assistive-technologies",
+          name: "assistive-technologies",
           fieldset: {
             legend: {
-              text: "Tell us about yourself",
+              text: "Which assistive technologies do you use?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -61,32 +61,20 @@ items: [{
           },
           items: [
             {
-              value: "I’m blind or have a visual impairment",
-              text: "I’m blind or have a visual impairment"
+              value: "Screen readers (JAWS, NVDA, VoiceOver on iOS, TalkBack on Android)",
+              text: "Screen readers (JAWS, NVDA, VoiceOver on iOS, TalkBack on Android)"
             },
             {
-              value: "I’m Deaf or have a hearing impairment",
-              text: "I’m Deaf or have a hearing impairment"
+              value: "Screen magnifiers (ZoomText, Windows Magnifier, Apple Zoom)",
+              text: "Screen magnifiers (ZoomText, Windows Magnifier, Apple Zoom)"
             },
             {
-              value: "I have a physical or motor disability",
-              text: "I have a physical or motor disability"
-            },
-            {
-              value: "I’m neurodiverse",
-              text: "I’m neurodiverse"
-            },
-            {
-              value: "I have learning disabilities",
-              text: "I have learning disabilities"
-            },
-            {
-              value: "I have a hidden disability",
-              text: "I have a hidden disability"
+              value: "Speech recognition (Dragon)",
+              text: "Speech recognition (Dragon)"
             }
           ]
         }) }}
-    
+
         <button class="govuk-button" data-module="govuk-button">
           Continue
         </button>

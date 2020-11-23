@@ -19,12 +19,12 @@ router.post('/participants', function (req, res) {
 
 router.post('/accessibility-user', function (req, res) {
 
-  const over18 = req.session.data['accessibility-user']
+  const accessibilityUser = req.session.data['accessibility-user']
 
-  if (over18 === 'Yes') {
-    res.redirect('/02/about-you')
+  if (accessibilityUser === 'Yes') {
+    res.redirect('/02/which-assistive-technologies')
   } else {
-    res.redirect('/02/contact-details')
+    res.redirect('/02/about-you')
   }
 })
 

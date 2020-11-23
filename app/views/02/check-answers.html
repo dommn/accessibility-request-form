@@ -117,6 +117,20 @@ items: [{
           {% if data['accessibility-user'] == 'Yes'  %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+              Assistive technologies you use
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["assistive-technologies"] }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="which-assistive-technologies">
+                Change<span class="govuk-visually-hidden"> which assistive technologies you use</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
               About you
             </dt>
             <dd class="govuk-summary-list__value">
@@ -128,7 +142,6 @@ items: [{
               </a>
             </dd>
           </div>
-          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Your full name
@@ -156,7 +169,6 @@ items: [{
             </dd>
           </div>
         </dl>
-
 
         <button class="govuk-button" data-module="govuk-button">
           Submit
