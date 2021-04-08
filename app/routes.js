@@ -28,4 +28,13 @@ router.post('/accessibility-user', function (req, res) {
   }
 })
 
+// GET SPRINT NAME - useful for relative templates
+router.use('/', (req, res, next) => {
+  res.locals.prevURL = req.get('Referrer'); // previous page
+  res.locals.currentURL = req.originalUrl; // current page
+  console.log('previous page: ' + res.locals.prevURL);
+  console.log('current page: ' + res.locals.currentURL);
+  next();
+});
+
 module.exports = router
