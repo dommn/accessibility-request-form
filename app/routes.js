@@ -8,11 +8,11 @@ router.post('/participants', function (req, res) {
   let inputName1 = req.session.data['participants']
   let inputName2 = req.session.data['participants'] 
   if (inputName1 === 'Usability testing' ) {
-    res.redirect('/01/wcag')
+    res.redirect('/v1/request-volunteers/wcag')
   } else if (inputName2 === 'Other types of user research') {
-    res.redirect('/01/no-wcag-route/what-phase')
+    res.redirect('/v1/request-volunteers/what-phase')
   } else {
-    res.redirect('/01/wcag')
+    res.redirect('/v1/request-volunteers/wcag')
   }
 
 })
@@ -22,9 +22,9 @@ router.post('/accessibility-user', function (req, res) {
   const accessibilityUser = req.session.data['accessibility-user']
 
   if (accessibilityUser === 'Yes') {
-    res.redirect('/02/which-assistive-technologies')
+    res.redirect('/v1/sign-up/which-assistive-technologies')
   } else {
-    res.redirect('/02/about-you')
+    res.redirect('/v1/sign-up/about-you')
   }
 })
 
