@@ -8,7 +8,7 @@
 {{ hmctsHeader({
 
 service: {
-name: 'Find colleagues with accessibility needs',
+name: 'Help to make our digital services accessible for DWP staff',
 url: ''
 },
 
@@ -38,7 +38,18 @@ items: [{
 
 {% block content %}
 
-<a class="govuk-heading-m" href="v2">Version 2</a>
-<a class="govuk-heading-m" href="v1">Version 1</a>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  
+    <h1 class="govuk-heading-l">Help to make our digital services accessible for DWP staff</h1>
+    <p class="govuk-body">Use this form to tell us how you can help us to make digital products and services more accessible for staff.</p>
+    {{ govukButton({
+      text: "Start now",
+      href: "what",
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
 
 {% endblock %}

@@ -38,7 +38,20 @@ items: [{
 
 {% block content %}
 
-<a class="govuk-heading-m" href="v2">Version 2</a>
-<a class="govuk-heading-m" href="v1">Version 1</a>
+<div class="govuk-inset-text">
+  <p>Request volunteers</p>
+  {{ govukButton({
+    "text": "View prototype",
+    "href": "v2/request-volunteers/start"
+  }) }}
+</div>
+
+<div class="govuk-inset-text">
+  <p>Sign up to take part</p>
+  {{ govukButton({
+    "text": "View prototype",
+    "href": "v2/sign-up/start"
+  }) }}
+</div>
 
 {% endblock %}

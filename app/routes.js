@@ -22,9 +22,60 @@ router.post('/accessibility-user', function (req, res) {
   const accessibilityUser = req.session.data['accessibility-user']
 
   if (accessibilityUser === 'Yes') {
-    res.redirect('/v1/sign-up/which-assistive-technologies')
+    res.redirect('v1/sign-up/which-assistive-technologies')
   } else {
-    res.redirect('/v1/sign-up/about-you')
+    res.redirect('v1/sign-up/about-you')
+  }
+})
+
+router.post('/accessibility-user-v2', function (req, res) {
+
+  const accessibilityUser = req.session.data['accessibility-user']
+
+  if (accessibilityUser === 'Yes') {
+    res.redirect('v2/sign-up/which-assistive-technologies')
+  } else {
+    res.redirect('v2/sign-up/about-you')
+  }
+})
+
+router.post('/research-type', function (req, res) {
+
+  const research = req.session.data['research-type']
+  const usabilityTesting = research.includes("Usability testing")
+  const isResearchArray = Array.isArray(research)
+
+  if (usabilityTesting) {
+    if (!isResearchArray) {
+      res.redirect('v2/request-volunteers/how-many-users') // if only usability testing selected
+    } else {
+      res.redirect('v2/request-volunteers/reasons-why') // if multiple selected
+    }
+  } else {
+    res.redirect('v2/request-volunteers/reasons-why') // if usability testing not selected
+  }
+})
+
+router.post('/assistive-technologies', function (req, res) {
+
+  const research = req.session.data['research-type']
+  const usabilityTesting = research.includes("Usability testing")
+
+  if (usabilityTesting) {
+    res.redirect('v2/request-volunteers/which-assistive-technologies')
+  } else {
+    res.redirect('v2/request-volunteers/when')
+  }
+})
+
+router.post('/monday-to-friday', function (req, res) {
+
+  const fullTime = req.session.data['monday-to-friday']
+
+  if (fullTime === 'Yes') {
+    res.redirect('v2/sign-up/notice')
+  } else {
+    res.redirect('v2/sign-up/which-days')
   }
 })
 

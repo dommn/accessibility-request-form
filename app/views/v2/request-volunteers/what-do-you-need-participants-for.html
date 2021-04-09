@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{% from "hmcts-header/macro.njk" import hmctsHeader %}
+
+{{ hmctsHeader({
+
+service: {
+name: 'Find colleagues with accessibility needs',
+url: 'start'
+},
+
+navigation: {
+label: 'Account navigation',
+items: [{
+  text: '',
+  href: ''
+}
+]
+}
+
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  "tag": {
+    "text": "prototype"
+  },
+  "html": "This is a prototype of a new service."
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "start"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="what-phase" method="post" class="form">
+
+        {{ govukCheckboxes({
+          idPrefix: "research-type",
+          name: "research-type",
+          fieldset: {
+            legend: {
+              text: "What do you need participants for?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+            {
+              value: "Usability testing",
+              text: "Usability testing"
+            },
+            {
+              value: "Other user research",
+              text: "Other user research"
+            }
+          ]
+        }) }}
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{% from "hmcts-header/macro.njk" import hmctsHeader %}
+
+{{ hmctsHeader({
+
+service: {
+name: 'Help to make our digital services accessible for DWP staff',
+url: 'start'
+},
+
+navigation: {
+label: 'Account navigation',
+items: [{
+  text: '',
+  href: ''
+}
+]
+}
+
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  "tag": {
+    "text": "prototype"
+  },
+  "html": "This is a prototype of a new service."
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "start"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="how" method="post" novalidate>
+
+        {{ govukCheckboxes({
+          idPrefix: "how-you-can-help",
+          name: "how-you-can-help",
+          fieldset: {
+            legend: {
+              text: "What are you interested in doing?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+            {
+              value: "Trying out new digital products and services",
+              text: "Trying out new digital products and services"
+            },
+            {
+              value: "Telling you about my needs and experiences",
+              text: "Telling you about my needs and experiences"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+        
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

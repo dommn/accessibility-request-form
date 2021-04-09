@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{% from "hmcts-header/macro.njk" import hmctsHeader %}
+
+{{ hmctsHeader({
+
+service: {
+name: 'Help to make our digital services accessible for DWP staff',
+url: 'start'
+},
+
+navigation: {
+label: 'Account navigation',
+items: [{
+  text: '',
+  href: ''
+}
+]
+}
+
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  "tag": {
+    "text": "prototype"
+  },
+  "html": "This is a prototype of a new service."
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="contact-details" method="post" novalidate>
+
+        {{ govukCheckboxes({
+          idPrefix: "accessibility-needs",
+          name: "accessibility-needs",
+          fieldset: {
+            legend: {
+              text: "Tell us about yourself",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+            {
+              value: "I’m Blind or have a visual impairment",
+              text: "I’m Blind or have a visual impairment"
+            },
+            {
+              value: "I’m Deaf or have a hearing impairment",
+              text: "I’m Deaf or have a hearing impairment"
+            },
+            {
+              value: "I have a physical or motor disability",
+              text: "I have a physical or motor disability"
+            },
+            {
+              value: "I’m neurodiverse",
+              text: "I’m neurodiverse"
+            },
+            {
+              value: "I have learning disabilities",
+              text: "I have learning disabilities"
+            },
+            {
+              value: "I have a hidden disability",
+              text: "I have a hidden disability"
+            }
+          ]
+        }) }}
+    
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

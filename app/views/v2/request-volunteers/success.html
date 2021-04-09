@@ -9,7 +9,7 @@
 
 service: {
 name: 'Find colleagues with accessibility needs',
-url: ''
+url: 'start'
 },
 
 navigation: {
@@ -37,8 +37,14 @@ items: [{
 {% endblock %}
 
 {% block content %}
+  
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-<a class="govuk-heading-m" href="v2">Version 2</a>
-<a class="govuk-heading-m" href="v1">Version 1</a>
+    <h1 class="govuk-heading-xl">Thank you</h1>
+    <p class="govuk-body">Your information has successfully been submitted. We will get in touch with you soon.</p>
+
+  </div>
+</div>
 
 {% endblock %}

@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{% from "hmcts-header/macro.njk" import hmctsHeader %}
+
+{{ hmctsHeader({
+
+service: {
+name: 'Find colleagues with accessibility needs',
+url: 'start'
+},
+
+navigation: {
+label: 'Account navigation',
+items: [{
+  text: '',
+  href: ''
+}
+]
+}
+
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  "tag": {
+    "text": "prototype"
+  },
+  "html": "This is a prototype of a new service."
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "accessibility-user"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="notice" method="post" class="form">
+
+      {{ govukCheckboxes({
+        idPrefix: "which-days",
+        name: "which-days",
+        fieldset: {
+          legend: {
+            text: "Which days do you work?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Select all that apply."
+        },
+        items: [
+          {
+            value: "Monday",
+            text: "Monday"
+          },
+          {
+            value: "Tuesday",
+            text: "Tuesday"
+          },
+          {
+            value: "Wednesday",
+            text: "Wednesday"
+          },
+          {
+            value: "Thursday",
+            text: "Thursday"
+          },
+          {
+            value: "Friday",
+            text: "Friday"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

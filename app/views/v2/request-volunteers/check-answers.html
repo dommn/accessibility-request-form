@@ -1,0 +1,252 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{% from "hmcts-header/macro.njk" import hmctsHeader %}
+
+{{ hmctsHeader({
+
+service: {
+name: 'Find colleagues with accessibility needs',
+url: 'start'
+},
+
+navigation: {
+label: 'Account navigation',
+items: [{
+  text: '',
+  href: ''
+}
+]
+}
+
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  "tag": {
+    "text": "prototype"
+  },
+  "html": "This is a prototype of a new service."
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "contact-details"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-l">Check your answers</h1>
+      
+    <h2 class="govuk-heading-m">Details of the research or testing</h2>
+      
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Purpose
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["research-type"] | length < 4 %} 
+            {% for item in data['research-type'] %}
+              <p>{{ item }}</p>
+            {% endfor %}
+          {% else %}
+            <p>{{ data['research-type'] }}</p>
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="what-do-you-need-participants-for">
+            Change<span class="govuk-visually-hidden"> what you need participants for</span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Phase
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['phase'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="what-phase">
+            Change<span class="govuk-visually-hidden"> what phase you are in</span>
+          </a>
+        </dd>
+      </div>
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Project, product or service name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['project-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="project-name">
+            Change<span class="govuk-visually-hidden"> the name of your project, product or service</span>
+          </a>
+        </dd>
+      </div>
+    
+      {% if data["research-type"] !== "Usability testing" %} 
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Aims
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['reasons-why'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="reasons-why">
+            Change<span class="govuk-visually-hidden"> your aims for the research or testing you plan to do with users who have accessibility needs</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Number of users
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['how-many-users'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="how-many-users">
+            Change<span class="govuk-visually-hidden"> how many users you need</span>
+          </a>
+        </dd>
+      </div>
+
+      {% if data["research-type"] !== "Other user research" %} 
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Assistive technologies
+        </dt>
+        <dd class="govuk-summary-list__value">             
+        {% if data['assistive-technologies'] | length < 4 %} 
+            {% for item in data['assistive-technologies'] %}
+              <p>{{ item }}</p>
+            {% endfor %}
+        {% else %}
+            <p>{{ data['assistive-technologies'] }}</p>
+        {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="which-assistive-technologies">
+            Change<span class="govuk-visually-hidden"> which assistive technologies you need to test with</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Start date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['start-date-day'] }} {{ data['start-date-month'] | toMonth }} {{ data['start-date-year'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="when">
+            Change<span class="govuk-visually-hidden"> what date you plan to start your research or testing</span>
+          </a>
+        </dd>
+      </div>
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          End date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['end-date-day'] }} {{ data['end-date-month'] | toMonth }} {{ data['end-date-year'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="when">
+            Change<span class="govuk-visually-hidden"> what date you plan to end your research or testing</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">Contact details</h2>
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Your full name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['full-name'] | title }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="contact-details">
+            Change<span class="govuk-visually-hidden"> your full name</span>
+          </a>
+        </dd>
+      </div>
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Your email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['email'] | lower }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="contact-details">
+            Change<span class="govuk-visually-hidden"> your email address</span>
+          </a>
+        </dd>
+      </div>
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Your line manager’s full name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['line-manager-full-name'] | title }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="contact-details">
+            Change<span class="govuk-visually-hidden"> your line manager’s full name</span>
+          </a>
+        </dd>
+      </div>
+  
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Your line manager’s email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['line-manager-email'] | lower }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="contact-details">
+            Change<span class="govuk-visually-hidden"> your line manager’s email address</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "success"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
