@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{% from "hmcts-header/macro.njk" import hmctsHeader %}
+
+{{ hmctsHeader({
+
+service: {
+name: 'Help to make our digital services accessible for DWP staff',
+url: 'start'
+},
+
+navigation: {
+label: 'Account navigation',
+items: [{
+  text: '',
+  href: ''
+}
+]
+}
+
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  "tag": {
+    "text": "prototype"
+  },
+  "html": "This is a prototype of a new service."
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="contact-details" method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {% if "I’m neurodiverse" in data["accessibility-needs"] and "I have a hidden disability" not in data["accessibility-needs"] %}
+                Tell us more about your neurodiversity
+                {% elif "I have a hidden disability" in data["accessibility-needs"] and "I’m neurodiverse" not in data["accessibility-needs"]%}
+                Tell us more about your hidden disability
+                {% else %}
+                Tell us more about your neurodiversity and hidden disability
+                {% endif %}
+              </h1>
+            </legend>
+            <div id="detail-accessibility-needs" class="govuk-hint">
+              Select all that apply.
+            </div>
+            <div class="govuk-checkboxes">
+              {% if "I’m neurodiverse" in data["accessibility-needs"] %}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="dyslexia" name="detail-accessibility-needs" type="checkbox" value="Dyslexia">
+                <label class="govuk-label govuk-checkboxes__label" for="dyslexia">
+                  Dyslexia 
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="dyspraxia" name="detail-accessibility-needs" type="checkbox" value="Dyspraxia">
+                <label class="govuk-label govuk-checkboxes__label" for="dyspraxia">
+                  Dyspraxia
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="dyscalculia" name="detail-accessibility-needs" type="checkbox" value="Dyscalculia">
+                <label class="govuk-label govuk-checkboxes__label" for="dyscalculia">
+                  Dyscalculia
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="adhd-or-add" name="detail-accessibility-needs" type="checkbox" value="ADHD or ADD">
+                <label class="govuk-label govuk-checkboxes__label" for="adhd-or-add">
+                  ADHD or ADD
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="autism" name="detail-accessibility-needs" type="checkbox" value="Autism">
+                <label class="govuk-label govuk-checkboxes__label" for="autism">
+                  Autism
+                </label>
+              </div>
+              {% endif %}
+              {% if "I have a hidden disability" in data["accessibility-needs"] %}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="depression" name="detail-accessibility-needs" type="checkbox" value="Depression">
+                <label class="govuk-label govuk-checkboxes__label" for="depression">
+                  Depression
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="memory-problems" name="detail-accessibility-needs" type="checkbox" value="Memory problems like dementia">
+                <label class="govuk-label govuk-checkboxes__label" for="memory-problems">
+                  Memory problems like dementia
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="brain-injury" name="detail-accessibility-needs" type="checkbox" value="Brain injury">
+                <label class="govuk-label govuk-checkboxes__label" for="brain-injury">
+                  Brain injury
+                </label>
+              </div>
+              {% endif %}
+            </div>
+        
+          </fieldset>
+        </div>
+    
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

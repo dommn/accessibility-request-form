@@ -79,6 +79,17 @@ router.post('/monday-to-friday', function (req, res) {
   }
 })
 
+router.post('/accessibility-needs', function (req, res) {
+
+  const accessibilityNeeds = req.session.data['accessibility-needs']
+
+  if (accessibilityNeeds.includes("I’m neurodiverse") || accessibilityNeeds.includes("I have a hidden disability")) {
+    res.redirect('v2/sign-up/more-about-you')
+  } else {
+    res.redirect('v2/sign-up/contact-details')
+  }
+})
+
 // GET SPRINT NAME - useful for relative templates
 router.use('/', (req, res, next) => {
   res.locals.prevURL = req.get('Referrer'); // previous page

@@ -216,8 +216,35 @@ items: [{
           </a>
         </dd>
       </div>
+      {% if data['detail-accessibility-needs'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {% if "I’m neurodiverse" in data["accessibility-needs"] and "I have a hidden disability" not in data["accessibility-needs"] %}
+            Tell us more about your neurodiversity
+          {% elif "I have a hidden disability" in data["accessibility-needs"] and "I’m neurodiverse" not in data["accessibility-needs"]%}
+            Tell us more about your hidden disability
+          {% else %}
+            Tell us more about your neurodiversity and hidden disability
+          {% endif %}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["detail-accessibility-needs"] | length > 4 %} 
+            {% for item in data['detail-accessibility-needs'] %}
+              <p>{{ item }}</p>
+            {% endfor %}
+          {% else %}
+            <p>{{ data['detail-accessibility-needs'] }}</p>
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="more-about-you">
+            Change<span class="govuk-visually-hidden"> your answer to tell us about yourself</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
     </dl>
-          
+
     <h2 class="govuk-heading-m">Contact details</h2>
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9"> 
