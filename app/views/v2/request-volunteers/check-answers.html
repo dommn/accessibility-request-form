@@ -57,7 +57,7 @@ items: [{
           Purpose
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data["research-type"] | length < 4 %} 
+          {% if data["research-type"] | isArray %} 
             {% for item in data['research-type'] %}
               <p>{{ item }}</p>
             {% endfor %}
@@ -136,7 +136,7 @@ items: [{
           Assistive technologies
         </dt>
         <dd class="govuk-summary-list__value">             
-        {% if data['assistive-technologies'] | length < 4 %} 
+        {% if data['assistive-technologies'] | isArray %} 
             {% for item in data['assistive-technologies'] %}
               <p>{{ item }}</p>
             {% endfor %}

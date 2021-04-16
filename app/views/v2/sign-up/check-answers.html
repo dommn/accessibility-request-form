@@ -56,7 +56,7 @@ items: [{
           What you’re interested in doing
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data["how-you-can-help"] | length < 4 %} 
+          {% if data["how-you-can-help"] | isArray %} 
             {% for item in data['how-you-can-help'] %}
               <p>{{ item }}</p>
             {% endfor %}
@@ -76,7 +76,7 @@ items: [{
           How you want to take part
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data["how"] | length < 5 %} 
+          {% if data["how"] | isArray %} 
             {% for item in data['how'] %}
               <p>{{ item }}</p>
             {% endfor %}
@@ -96,7 +96,7 @@ items: [{
           How much time
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data["time"] | length < 5 %} 
+          {% if data["time"] | isArray %} 
             {% for item in data['time'] %}
               <p>{{ item }}</p>
             {% endfor %}
@@ -131,7 +131,7 @@ items: [{
           Which days do you work?
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data["which-days"] | length < 6 %} 
+          {% if data["which-days"] | isArray %} 
             {% for item in data['which-days'] %}
               <p>{{ item }}</p>
             {% endfor %}
@@ -181,7 +181,7 @@ items: [{
           Assistive technologies you use
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data["assistive-technologies"] | length < 4 %} 
+          {% if data["assistive-technologies"] | isArray %} 
             {% for item in data['assistive-technologies'] %}
               <p>{{ item }}</p>
             {% endfor %}
@@ -202,7 +202,7 @@ items: [{
           About you
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data["accessibility-needs"] | length < 4 %} 
+          {% if data["accessibility-needs"] | isArray %} 
             {% for item in data['accessibility-needs'] %}
               <p>{{ item }}</p>
             {% endfor %}
@@ -228,7 +228,7 @@ items: [{
           {% endif %}
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data["detail-accessibility-needs"] | length > 4 %} 
+          {% if data["detail-accessibility-needs"] | isArray %} 
             {% for item in data['detail-accessibility-needs'] %}
               <p>{{ item }}</p>
             {% endfor %}

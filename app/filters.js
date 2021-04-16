@@ -17,6 +17,10 @@ module.exports = function (env) {
     }
   }
 
+  filters.isArray = function(x){
+    return Array.isArray(x);
+  }
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
