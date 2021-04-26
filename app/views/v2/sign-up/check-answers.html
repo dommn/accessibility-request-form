@@ -128,7 +128,7 @@ items: [{
       {% if data["monday-to-friday"] == "No" %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Which days do you work?
+          Days you usually work
         </dt>
         <dd class="govuk-summary-list__value">
           {% if data["which-days"] | isArray %} 
@@ -141,7 +141,7 @@ items: [{
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="which-days">
-            Change<span class="govuk-visually-hidden"> which days you work</span>
+            Change<span class="govuk-visually-hidden"> which days you usually work</span>
           </a>
         </dd>
       </div>
@@ -149,7 +149,7 @@ items: [{
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          How much notice
+          The notice you need
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['notice'] }}
@@ -166,32 +166,32 @@ items: [{
           Do you use accessibility software in work?
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['accessibility-user'] }}
+          {{ data['accessibility-software'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="accessibility-user">
+          <a class="govuk-link" href="accessibility-software">
             Change<span class="govuk-visually-hidden"> if you use accessibility software in work</span>
           </a>
         </dd>
       </div>
 
-      {% if data['accessibility-user'] == 'Yes'  %}
+      {% if data['accessibility-software'] == 'Yes'  %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Assistive technologies you use in work
+          Accessibility software you use in work
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data["assistive-technologies"] | isArray %} 
-            {% for item in data['assistive-technologies'] %}
+          {% if data["what-accessibility-software"] | isArray %} 
+            {% for item in data['what-accessibility-software'] %}
               <p>{{ item }}</p>
             {% endfor %}
           {% else %}
-            <p>{{ data['assistive-technologies'] }}</p>
+            <p>{{ data['what-accessibility-software'] }}</p>
           {% endif %}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="which-assistive-technologies">
-            Change<span class="govuk-visually-hidden"> which assistive technologies you use in work</span>
+          <a class="govuk-link" href="what-accessibility-software">
+            Change<span class="govuk-visually-hidden"> what accessibility software you use in work</span>
           </a>
         </dd>
       </div>
@@ -220,11 +220,11 @@ items: [{
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           {% if "I’m neurodiverse" in data["accessibility-needs"] and "I have a hidden disability" not in data["accessibility-needs"] %}
-            Tell us more about your neurodiversity
+            More about your neurodiversity
           {% elif "I have a hidden disability" in data["accessibility-needs"] and "I’m neurodiverse" not in data["accessibility-needs"]%}
-            Tell us more about your hidden disability
+            More about your hidden disability
           {% else %}
-            Tell us more about your neurodiversity and hidden disability
+            More about your neurodiversity and hidden disability
           {% endif %}
         </dt>
         <dd class="govuk-summary-list__value">

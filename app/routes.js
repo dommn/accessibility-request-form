@@ -28,12 +28,12 @@ router.post('/accessibility-user', function (req, res) {
   }
 })
 
-router.post('/accessibility-user-v2', function (req, res) {
+router.post('/accessibility-software-v2', function (req, res) {
 
-  const accessibilityUser = req.session.data['accessibility-user']
+  const accessibilityUser = req.session.data['accessibility-software']
 
   if (accessibilityUser === 'Yes') {
-    res.redirect('v2/sign-up/which-assistive-technologies')
+    res.redirect('v2/sign-up/what-accessibility-software')
   } else {
     res.redirect('v2/sign-up/about-you')
   }

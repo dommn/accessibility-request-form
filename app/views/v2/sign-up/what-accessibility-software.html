@@ -8,7 +8,7 @@
 {{ hmctsHeader({
 
 service: {
-name: 'Help to make our digital services accessible for DWP staff',
+name: 'Find colleagues with accessibility needs',
 url: 'start'
 },
 
@@ -36,7 +36,7 @@ items: [{
 
 {{ govukBackLink({
   text: "Back",
-  href: "notice"
+  href: "accessibility-software"
 }) }}
 
 {% endblock %}
@@ -44,27 +44,33 @@ items: [{
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/accessibility-user-v2" method="post" novalidate>
+      <form action="about-you" method="post" class="form">
 
-        {{ govukRadios({
-          classes: "govuk-radios",
-          idPrefix: "accessibility-user",
-          name: "accessibility-user",
+        {{ govukCheckboxes({
+          idPrefix: "what-accessibility-software",
+          name: "what-accessibility-software",
           fieldset: {
             legend: {
-              text: "Do you use accessibility software in work?",
+              text: "What accessibility software do you use in work?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
+          hint: {
+            text: "Select all that apply."
+          },
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              value: "Screen readers (JAWS, Read&Write, Fusion, VoiceOver on iOS, TalkBack on Android)",
+              text: "Screen readers (JAWS, Read&Write, Fusion, VoiceOver on iOS, TalkBack on Android)"
             },
             {
-              value: "No",
-              text: "No"
+              value: "Screen magnifiers (ZoomText, SuperNova, Windows Magnifier, Apple Zoom)",
+              text: "Screen magnifiers (ZoomText, SuperNova, Windows Magnifier, Apple Zoom)"
+            },
+            {
+              value: "Speech recognition (Dragon, Read&Write)",
+              text: "Speech recognition (Dragon, Read&Write)"
             }
           ]
         }) }}

@@ -45,29 +45,27 @@ items: [{
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Your contact details</h1>
+      <h1 class="govuk-heading-l">Alternative contact</h1>
+      <p class="govuk-body">Tell us who we should contact if we cannot reach you. This could be your product manager or someone else on your team.</p>
 
-      <form action="alternative-contact" method="post" novalidate>
+      <form action="check-answers" method="post" novalidate>
 
         {{ govukInput({
           label: {
-            text: "Your full name"
+            text: "Their full name"
           },
-          id: "full-name",
-          name: "full-name",
+          id: "alternative-contact-full-name",
+          name: "alternative-contact-full-name",
           autocomplete: "name",
-          spellcheck: false
+          spellcheck: false 
         }) }}
-        
+
         {{ govukInput({
           label: {
-            text: "Your email address"
+            text: "Their email address"
           },
-          hint: {
-            text: "We will only use this to contact you about your research or testing."
-          },
-          id: "email",
-          name: "email",
+          id: "alternative-contact-email",
+          name: "alternative-contact-email",
           type: "email",
           autocomplete: "email",
           spellcheck: false

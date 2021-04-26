@@ -45,9 +45,9 @@ items: [{
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Contact details</h1>
+      <h1 class="govuk-heading-l">Your contact details</h1>
 
-      <form action="check-answers" method="post" novalidate>
+      <form action="line-manager-contact-details" method="post" novalidate>
 
         {{ govukInput({
           label: {
@@ -64,34 +64,10 @@ items: [{
             text: "Your email address"
           },
           hint: {
-            text: "We’ll only use this to contact you about your help in making our digital services accessible for DWP staff"
+            text: "We will only use this to contact you about your help in making our digital services accessible for DWP staff."
           },
           id: "email",
           name: "email",
-          type: "email",
-          autocomplete: "email",
-          spellcheck: false
-        }) }}
-
-        {{ govukInput({
-          label: {
-            text: "Your line manager’s full name"
-          },
-          id: "line-manager-full-name",
-          name: "line-manager-full-name",
-          autocomplete: "name",
-          spellcheck: false 
-        }) }}
-
-        {{ govukInput({
-          label: {
-            text: "Your line manager’s email address"
-          },
-          hint: {
-            text: "We’ll only use this to contact your line manager about your help in making our digital services accessible for DWP staff"
-          },
-          id: "line-manager-email",
-          name: "line-manager-email",
           type: "email",
           autocomplete: "email",
           spellcheck: false
