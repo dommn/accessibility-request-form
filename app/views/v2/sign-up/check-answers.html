@@ -113,21 +113,6 @@ items: [{
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Do you work Monday to Friday?
-        </dt>
-        <dd class="govuk-summary-list__value">
-         {{ data["monday-to-friday"] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="monday-to-friday">
-            Change<span class="govuk-visually-hidden"> if you work Monday to Friday</span>
-          </a>
-        </dd>
-      </div>
-
-      {% if data["monday-to-friday"] == "No" %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
           Days you usually work
         </dt>
         <dd class="govuk-summary-list__value">
@@ -145,7 +130,6 @@ items: [{
           </a>
         </dd>
       </div>
-      {% endif %}
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">

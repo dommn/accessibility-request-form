@@ -68,17 +68,6 @@ router.post('/assistive-technologies', function (req, res) {
   }
 })
 
-router.post('/monday-to-friday', function (req, res) {
-
-  const fullTime = req.session.data['monday-to-friday']
-
-  if (fullTime === 'Yes') {
-    res.redirect('v2/sign-up/notice')
-  } else {
-    res.redirect('v2/sign-up/which-days')
-  }
-})
-
 router.post('/accessibility-needs', function (req, res) {
 
   const accessibilityNeeds = req.session.data['accessibility-needs']
