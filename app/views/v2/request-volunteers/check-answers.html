@@ -36,7 +36,7 @@ items: [{
 
 {{ govukBackLink({
   text: "Back",
-  href: "contact-details"
+  href: "alternative-contact"
 }) }}
 
 {% endblock %}
@@ -118,17 +118,45 @@ items: [{
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Number of users
+          Which users you need
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['how-many-users'] }}
+          {% if data["accessibility-needs"] | isArray %} 
+            {% for item in data['accessibility-needs'] %}
+              <p>{{ item }}</p>
+            {% endfor %}
+          {% else %}
+            <p>{{ data['accessibility-needs'] }}</p>
+          {% endif %}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="how-many-users">
-            Change<span class="govuk-visually-hidden"> how many users you need</span>
+          <a class="govuk-link" href="which-users">
+            Change<span class="govuk-visually-hidden"> which users you need</span>
           </a>
         </dd>
       </div>
+
+      {% if data['detail-accessibility-needs'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          More about the users you need 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["detail-accessibility-needs"] | isArray %} 
+            {% for item in data['detail-accessibility-needs'] %}
+              <p>{{ item }}</p>
+            {% endfor %}
+          {% else %}
+            <p>{{ data['detail-accessibility-needs'] }}</p>
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="more-about-users">
+            Change<span class="govuk-visually-hidden"> your answer to tell us more about the users you need</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
 
       {% if data["research-type"] !== "Other user research" %} 
       <div class="govuk-summary-list__row">
@@ -151,6 +179,20 @@ items: [{
         </dd>
       </div>
       {% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Number of users
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['how-many-users'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="how-many-users">
+            Change<span class="govuk-visually-hidden"> how many users you need</span>
+          </a>
+        </dd>
+      </div>
     
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">

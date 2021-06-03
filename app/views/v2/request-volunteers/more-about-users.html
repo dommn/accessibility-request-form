@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{% from "hmcts-header/macro.njk" import hmctsHeader %}
+
+{{ hmctsHeader({
+
+service: {
+name: 'Find colleagues with accessibility needs',
+url: 'start'
+},
+
+navigation: {
+label: 'Account navigation',
+items: [{
+  text: '',
+  href: ''
+}
+]
+}
+
+}) }}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  "tag": {
+    "text": "prototype"
+  },
+  "html": "This is a prototype of a new service."
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "which-users"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/assistive-technologies" method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {% if "Neurodiverse colleagues" in data["accessibility-needs"] and "Colleagues who have learning disabilities" not in data["accessibility-needs"] and "Colleagues who have a hidden disability" not in data["accessibility-needs"] %}
+                  Tell us more about users with neurodiversity
+                {% elif "Neurodiverse colleagues" in data["accessibility-needs"] and "Colleagues who have learning disabilities" in data["accessibility-needs"] and "Colleagues who have a hidden disability" not in data["accessibility-needs"] %}
+                  Tell us more about users with neurodiversity and learning disabilites
+                {% elif "Neurodiverse colleagues" in data["accessibility-needs"] and "Colleagues who have learning disabilities" not in data["accessibility-needs"] and "Colleagues who have a hidden disability" in data["accessibility-needs"] %}
+                  Tell us more about users with neurodiversity and hidden disabilites
+                {% elif "Neurodiverse colleagues" not in data["accessibility-needs"] and "Colleagues who have learning disabilities" in data["accessibility-needs"] and "Colleagues who have a hidden disability" not in data["accessibility-needs"] %}
+                  Tell us more about users with learning disabilities
+                {% elif "Neurodiverse colleagues" not in data["accessibility-needs"] and "Colleagues who have learning disabilities" in data["accessibility-needs"] and "Colleagues who have a hidden disability" in data["accessibility-needs"] %}
+                  Tell us more about users with learning disabilities and hidden disabilities
+                {% elif "Neurodiverse colleagues" not in data["accessibility-needs"] and "Colleagues who have learning disabilities" not in data["accessibility-needs"] and "Colleagues who have a hidden disability" in data["accessibility-needs"] %}
+                  Tell us more about users with hidden disabilities
+                {% elif "Neurodiverse colleagues" in data["accessibility-needs"] and "Colleagues who have learning disabilities" in data["accessibility-needs"] and "Colleagues who have a hidden disability" in data["accessibility-needs"] %}
+                  Tell us more about users with neurodiversity, learning disabilities and hidden disabilities
+                {% endif %}
+              </h1>
+            </legend>
+            <div id="detail-accessibility-needs" class="govuk-hint">
+              Select all that apply.
+            </div>
+            <div class="govuk-checkboxes">
+              {% if "Neurodiverse colleagues" in data["accessibility-needs"] or "Colleagues who have learning disabilities" in data["accessibility-needs"] %}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="dyslexia" name="detail-accessibility-needs" type="checkbox" value="I’m dyslexic">
+                <label class="govuk-label govuk-checkboxes__label" for="dyslexia">
+                  Colleagues who are dyslexic 
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="dyspraxia" name="detail-accessibility-needs" type="checkbox" value="I’m dyspraxic">
+                <label class="govuk-label govuk-checkboxes__label" for="dyspraxia">
+                  Collueges who are dyspraxic
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="dyscalculia" name="detail-accessibility-needs" type="checkbox" value="I have dyscalculia">
+                <label class="govuk-label govuk-checkboxes__label" for="dyscalculia">
+                  Colleagues with dyscalculia
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="adhd-or-add" name="detail-accessibility-needs" type="checkbox" value="I have ADHD or ADD">
+                <label class="govuk-label govuk-checkboxes__label" for="adhd-or-add">
+                  Colleagues with ADHD or ADD
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="autism" name="detail-accessibility-needs" type="checkbox" value="I’m autistic">
+                <label class="govuk-label govuk-checkboxes__label" for="autism">
+                  Colleagues who are autistic
+                </label>
+              </div>
+              {% endif %}
+              {% if "Colleagues who have a hidden disability" in data["accessibility-needs"] %}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="depression" name="detail-accessibility-needs" type="checkbox" value="I have depression">
+                <label class="govuk-label govuk-checkboxes__label" for="depression">
+                  Colleagues who have depression
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="memory-problems" name="detail-accessibility-needs" type="checkbox" value="I have memory problems like dementia">
+                <label class="govuk-label govuk-checkboxes__label" for="memory-problems">
+                  Colleagues who have memory problems like dementia
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="brain-injury" name="detail-accessibility-needs" type="checkbox" value="I have a brain injury">
+                <label class="govuk-label govuk-checkboxes__label" for="brain-injury">
+                  Colleagues who have a brain injury
+                </label>
+              </div>
+              {% endif %}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="nothing-in-this-list-applies-to-me" name="detail-accessibility-needs" type="checkbox" value="Nothing in this list applies to me">
+                <label class="govuk-label govuk-checkboxes__label" for="nothing-in-this-list-applies-to-me">
+                  Nothing in this list is applicable
+                </label>
+              </div>
+            </div>
+        
+          </fieldset>
+        </div>
+    
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

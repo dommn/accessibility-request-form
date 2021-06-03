@@ -47,7 +47,7 @@ router.post('/research-type', function (req, res) {
 
   if (usabilityTesting) {
     if (!isResearchArray) {
-      res.redirect('v2/request-volunteers/how-many-users') // if only usability testing selected
+      res.redirect('v2/request-volunteers/which-users') // if only usability testing selected
     } else {
       res.redirect('v2/request-volunteers/reasons-why') // if multiple selected
     }
@@ -64,7 +64,7 @@ router.post('/assistive-technologies', function (req, res) {
   if (usabilityTesting) {
     res.redirect('v2/request-volunteers/which-assistive-technologies')
   } else {
-    res.redirect('v2/request-volunteers/when')
+    res.redirect('v2/request-volunteers/how-many-users')
   }
 })
 
@@ -76,6 +76,21 @@ router.post('/accessibility-needs', function (req, res) {
     res.redirect('v2/sign-up/more-about-you')
   } else {
     res.redirect('v2/sign-up/accessibility-software')
+  }
+})
+
+router.post('/request-volunteers-accessibility-needs', function (req, res) {
+
+  const accessibilityNeeds = req.session.data['accessibility-needs']
+  const research = req.session.data['research-type']
+  const usabilityTesting = research.includes("Usability testing")
+
+  if (accessibilityNeeds.includes("Neurodiverse colleagues") || accessibilityNeeds.includes("Colleagues who have learning disabilities") || accessibilityNeeds.includes("Colleagues who have a hidden disability")) {
+    res.redirect('v2/request-volunteers/more-about-users')
+  } else if (usabilityTesting) {
+    res.redirect('v2/request-volunteers/which-assistive-technologies')
+  } else {
+    res.redirect('v2/request-volunteers/how-many-users')
   }
 })
 

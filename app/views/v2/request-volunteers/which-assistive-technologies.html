@@ -36,7 +36,7 @@ items: [{
 
 {{ govukBackLink({
   text: "Back",
-  href: "how-many-users"
+  href: "javascript:history.back()"
 }) }}
 
 {% endblock %}
@@ -44,7 +44,7 @@ items: [{
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="when" method="post" class="form">
+      <form action="how-many-users" method="post" class="form">
 
         {{ govukCheckboxes({
           idPrefix: "assistive-technologies",
