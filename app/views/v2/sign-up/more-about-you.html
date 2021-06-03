@@ -36,7 +36,7 @@ items: [{
 
 {{ govukBackLink({
   text: "Back",
-  href: "javascript:history.back()"
+  href: "about-you"
 }) }}
 
 {% endblock %}
@@ -44,18 +44,26 @@ items: [{
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="contact-details" method="post" novalidate>
+      <form action="accessibility-software" method="post" novalidate>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                {% if "I’m neurodiverse" in data["accessibility-needs"] and "I have a hidden disability" not in data["accessibility-needs"] %}
-                Tell us more about your neurodiversity
-                {% elif "I have a hidden disability" in data["accessibility-needs"] and "I’m neurodiverse" not in data["accessibility-needs"]%}
-                Tell us more about your hidden disability
-                {% else %}
-                Tell us more about your neurodiversity and hidden disability
+                {% if "I’m neurodiverse" in data["accessibility-needs"] and "I have learning disabilities" not in data["accessibility-needs"] and "I have a hidden disability" not in data["accessibility-needs"] %}
+                  Tell us more about your neurodiversity
+                {% elif "I’m neurodiverse" in data["accessibility-needs"] and "I have learning disabilities" in data["accessibility-needs"] and "I have a hidden disability" not in data["accessibility-needs"] %}
+                  Tell us more about your neurodiversity and learning disability
+                {% elif "I’m neurodiverse" in data["accessibility-needs"] and "I have learning disabilities" not in data["accessibility-needs"] and "I have a hidden disability" in data["accessibility-needs"] %}
+                  Tell us more about your neurodiversity and hidden disability
+                {% elif "I’m neurodiverse" not in data["accessibility-needs"] and "I have learning disabilities" in data["accessibility-needs"] and "I have a hidden disability" not in data["accessibility-needs"] %}
+                  Tell us more about your learning disability
+                {% elif "I’m neurodiverse" not in data["accessibility-needs"] and "I have learning disabilities" in data["accessibility-needs"] and "I have a hidden disability" in data["accessibility-needs"] %}
+                  Tell us more about your learning disability and hidden disability
+                {% elif "I’m neurodiverse" not in data["accessibility-needs"] and "I have learning disabilities" not in data["accessibility-needs"] and "I have a hidden disability" in data["accessibility-needs"] %}
+                  Tell us more about your hidden disability
+                {% elif "I’m neurodiverse" in data["accessibility-needs"] and "I have learning disabilities" in data["accessibility-needs"] and "I have a hidden disability" in data["accessibility-needs"] %}
+                  Tell us more about your neurodiversity, learning disability and hidden disability
                 {% endif %}
               </h1>
             </legend>
@@ -63,7 +71,7 @@ items: [{
               Select all that apply.
             </div>
             <div class="govuk-checkboxes">
-              {% if "I’m neurodiverse" in data["accessibility-needs"] %}
+              {% if "I’m neurodiverse" in data["accessibility-needs"] or "I have learning disabilities" in data["accessibility-needs"] %}
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="dyslexia" name="detail-accessibility-needs" type="checkbox" value="I’m dyslexic">
                 <label class="govuk-label govuk-checkboxes__label" for="dyslexia">

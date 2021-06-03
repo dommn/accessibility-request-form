@@ -35,7 +35,7 @@ router.post('/accessibility-software-v2', function (req, res) {
   if (accessibilityUser === 'Yes') {
     res.redirect('v2/sign-up/what-accessibility-software')
   } else {
-    res.redirect('v2/sign-up/about-you')
+    res.redirect('v2/sign-up/contact-details')
   }
 })
 
@@ -72,10 +72,10 @@ router.post('/accessibility-needs', function (req, res) {
 
   const accessibilityNeeds = req.session.data['accessibility-needs']
 
-  if (accessibilityNeeds.includes("I’m neurodiverse") || accessibilityNeeds.includes("I have a hidden disability")) {
+  if (accessibilityNeeds.includes("I’m neurodiverse") || accessibilityNeeds.includes("I have learning disabilities") || accessibilityNeeds.includes("I have a hidden disability")) {
     res.redirect('v2/sign-up/more-about-you')
   } else {
-    res.redirect('v2/sign-up/contact-details')
+    res.redirect('v2/sign-up/accessibility-software')
   }
 })
 
