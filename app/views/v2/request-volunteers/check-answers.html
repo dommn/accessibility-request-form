@@ -49,7 +49,7 @@ items: [{
 
     <h1 class="govuk-heading-l">Check your answers</h1>
       
-    <h2 class="govuk-heading-m">Details of the research or testing</h2>
+    <h2 class="govuk-heading-m">Details of your {{ "usability testing" if data['research-type'] == "Usability testing" }}{{ "user research" if data['research-type'] == "Other user research" }}{{ "usability testing and user research" if data['research-type'] | isArray}}</h2>
       
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
