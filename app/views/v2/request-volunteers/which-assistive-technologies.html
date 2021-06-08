@@ -71,6 +71,10 @@ items: [{
             {
               value: "Speech recognition (Dragon, Read&Write)",
               text: "Speech recognition (Dragon, Read&Write)"
+            },
+            {
+              value: "I do not need to conduct " + ("usability testing" if data['research-type'] == 'Usability testing') + ("user research" if data['research-type'] == 'Other user research') + ("usability testing and user research" if data['research-type'] | isArray) + " with any assistive technologies",
+              text: "I do not need to conduct " + ("usability testing" if data['research-type'] == 'Usability testing') + ("user research" if data['research-type'] == 'Other user research') + ("usability testing and user research" if data['research-type'] | isArray) + " with any assistive technologies"
             }
           ]
         }) }}

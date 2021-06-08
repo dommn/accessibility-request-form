@@ -64,7 +64,7 @@ items: [{
             text: "Your DWP email address"
           },
           hint: {
-            text: "We will only use this to contact you about your research or testing."
+            text: "We will only use this to contact you about your " + ("usability testing" if data['research-type'] == 'Usability testing') + ("user research" if data['research-type'] == 'Other user research') + ("usability testing and user research" if data['research-type'] | isArray)
           },
           id: "email",
           name: "email",

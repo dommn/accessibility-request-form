@@ -71,7 +71,6 @@ items: [{
               Select all that apply.
             </div>
             <div class="govuk-checkboxes">
-              {% if "Neurodiverse colleagues" in data["accessibility-needs"] or "Colleagues who have learning disabilities" in data["accessibility-needs"] %}
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="dyslexia" name="detail-accessibility-needs" type="checkbox" value="I’m dyslexic">
                 <label class="govuk-label govuk-checkboxes__label" for="dyslexia">
@@ -102,7 +101,6 @@ items: [{
                   Colleagues who are autistic
                 </label>
               </div>
-              {% endif %}
               {% if "Colleagues who have a hidden disability" in data["accessibility-needs"] %}
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="depression" name="detail-accessibility-needs" type="checkbox" value="I have depression">

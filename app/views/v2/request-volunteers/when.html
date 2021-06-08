@@ -46,13 +46,13 @@ items: [{
     <div class="govuk-grid-column-two-thirds">
       <form action="contact-details" method="post" novalidate>
 
-        <h2 class="govuk-heading-l">When do you plan to conduct your research?</h2>
+        <h2 class="govuk-heading-l">When do you plan to conduct your {{ "usability testing" if data['research-type'] == "Usability testing" }}{{ "user research" if data['research-type'] == "Other user research" }}{{ "usability testing and user research" if data['research-type'] | isArray}}?</h2>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
               <h1 class="govuk-fieldset__heading">
-                What date do you plan to start your research or testing? (Colleagues usually need 3 weeks’ notice to take part.)
+                What date do you plan to start your {{ "usability testing" if data['research-type'] == "Usability testing" }}{{ "user research" if data['research-type'] == "Other user research" }}{{ "usability testing and user research" if data['research-type'] | isArray}}? (Colleagues usually need 3 weeks’ notice to take part.)
               </h1>
             </legend>
 
@@ -88,7 +88,7 @@ items: [{
           <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
               <h1 class="govuk-fieldset__heading">
-                What date do you plan to end your research or testing?
+                What date do you plan to end your {{ "usability testing" if data['research-type'] == "Usability testing" }}{{ "user research" if data['research-type'] == "Other user research" }}{{ "usability testing and user research" if data['research-type'] | isArray}}?
               </h1>
             </legend>
         <div id="passport-issued-hint" class="govuk-hint">
